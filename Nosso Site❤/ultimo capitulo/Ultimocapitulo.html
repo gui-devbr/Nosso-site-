@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>O Próximo Capítulo — Presente de Natal</title>
+  <style>
+    :root {
+      --bg1: #0b1020;
+      --bg2: #2b0033;
+      --accent: #ffdd57;
+      --text: #f7f7fb;
+    }
+
+    html,body { height:100%; margin:0; font-family: "Poppins", Arial, sans-serif; }
+    body{
+      background: radial-gradient(1200px 600px at 10% 20%, rgba(138,43,226,0.18), transparent),
+                  radial-gradient(900px 500px at 90% 80%, rgba(75,0,130,0.12), transparent),
+                  linear-gradient(180deg,var(--bg1),var(--bg2));
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px;
+      overflow:hidden;
+    }
+
+    .card {
+      width: min(900px, 94%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border-radius: 18px;
+      padding: 34px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6), 0 0 60px rgba(123, 68, 238, 0.06) inset;
+      backdrop-filter: blur(6px);
+      position: relative;
+    }
+
+    .title {
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin: 0 0 14px 0;
+      text-shadow: 0 4px 18px rgba(0,0,0,0.5);
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 18px;
+    }
+
+    .typed {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #fff;
+      white-space: pre-wrap;
+      min-height: 220px;
+      margin-bottom: 18px;
+      opacity: 0;
+      transition: opacity .35s ease;
+    }
+
+    /* cursor */
+    .cursor {
+      display:inline-block;
+      width:6px;
+      height:1.1em;
+      background:var(--accent);
+      margin-left:6px;
+      vertical-align:middle;
+      animation: blink 1s infinite steps(2,start);
+    }
+    @keyframes blink { 50% { opacity:0 } }
+
+    .controls {
+      display:flex;
+      gap:12px;
+      justify-content:flex-end;
+      margin-top: 10px;
+    }
+    .controls button{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.12);
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:600;
+      transition:transform .18s ease, box-shadow .18s;
+    }
+    .controls button:hover{ transform:translateY(-4px); box-shadow:0 12px 30px rgba(0,0,0,0.45); }
+
+    /* partículas de brilho sutis */
+    .spark {
+      position:absolute;
+      width:8px; height:8px;
+      border-radius:50%;
+      background: linear-gradient(90deg, #ffd27a, #ff7bcb);
+      filter: blur(6px);
+      opacity:0.85;
+      mix-blend-mode: screen;
+      pointer-events:none;
+      animation: floaty 8s infinite linear;
+    }
+    @keyframes floaty {
+      0% { transform: translateY(0) translateX(0) scale(.8); opacity:.9; }
+      50% { transform: translateY(-80px) translateX(40px) scale(1.2); opacity:1; }
+      100% { transform: translateY(0) translateX(0) scale(.8); opacity:.9; }
+    }
+
+    /* responsivo */
+    @media (max-width:600px){
+      .card{ padding:22px; }
+      .typed{ min-height: 200px; font-size: 0.98rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="card">
+    <div class="title">🎁 O PRÓXIMO CAPÍTULO — Texto especial de Natal</div>
+    <div class="subtitle">Clique em “Revelar” para abrir o presente.</div>
+
+    <div class="typed" id="typed"></div>
+    <div class="cursor" id="cursor" style="display:none;"></div>
+
+    <div class="controls">
+      <button id="revealBtn">Revelar</button>
+      <button id="skipBtn">Mostrar tudo</button>
+      <a href="index.html"><button>Voltar</button></a>
+    </div>
+  </div>
+
+  <!-- partículas -->
+  <div class="spark" style="left:8%; top:18%; animation-duration:9s;"></div>
+  <div class="spark" style="left:88%; top:75%; animation-duration:7s;"></div>
+  <div class="spark" style="left:60%; top:8%; animation-duration:11s;"></div>
+
+  <script>
+    // texto que vai aparecer letra por letra
+    const text = `Se você chegou até aqui… então já percebeu.
+Nada com a gente é simples, nada é comum, nada é só 'mais um dia'.
+E, sinceramente? Ainda bem.
+
+Esse ano teve caos, risadas tortas, histórias aleatórias, portas discutindo comigo, piadas internas que ninguém no planeta entenderia… e você no meio disso tudo.
+E olha… isso deixou tudo mil vezes mais leve.
+
+Então aqui vai meu último relatório do ano:
+Feliz Natal, Mavih.
+Que teu fim de ano seja tão divertido quanto teu hiena-mode, tão brilhante quanto tuas risadas e tão inesperado quanto aquele beijo que durou três séculos.
+
+Câmbio — mas jamais desligo. Eu te amo ❤️</p>
+`;
+
+    const typedEl = document.getElementById('typed');
+    const cursor = document.getElementById('cursor');
+    const revealBtn = document.getElementById('revealBtn');
+    const skipBtn = document.getElementById('skipBtn');
+    let i = 0;
+    let typing = false;
+    let typingInterval;
+
+    function startTyping(speed = 28) {
+      if (typing) return;
+      typing = true;
+      typedEl.style.opacity = 1;
+      cursor.style.display = 'inline-block';
+
+      typingInterval = setInterval(() => {
+        if (i < text.length) {
+          typedEl.textContent += text.charAt(i);
+          i++;
+          // scroll automático se passar do tamanho
+          typedEl.scrollTop = typedEl.scrollHeight;
+        } else {
+          clearInterval(typingInterval);
+          cursor.style.display = 'none';
+          typing = false;
+        }
+      }, speed);
+    }
+
+    function showAll() {
+      clearInterval(typingInterval);
+      typedEl.textContent = text;
+      cursor.style.display = 'none';
+      typing = false;
+    }
+
+    revealBtn.addEventListener('click', () => {
+      // efeito sonoro de 'rewind' opcional: uncomment se tiver arquivo
+      // new Audio('rewind-sfx.mp3').play();
+      // pequena pausa cinematográfica
+      revealBtn.disabled = true;
+      revealBtn.textContent = 'Revelando…';
+      setTimeout(() => {
+        startTyping(26); // ajuste a velocidade aqui
+        revealBtn.textContent = 'Revelar';
+        revealBtn.disabled = false;
+      }, 420);
+    });
+
+    skipBtn.addEventListener('click', showAll);
+
+    // suporte pra aparecer letra por letra imediatamente se quiser iniciar automático:
+    // startTyping(26);
+  </script>
+</body>
+</html>

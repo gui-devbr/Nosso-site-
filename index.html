@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Segredos da Mavih</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #4b0082, #8a2be2);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+    position: relative;
+  }
+
+  .container {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 3em;
+    margin-bottom: 50px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+  }
+
+  .buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 200px); /* Dois botões por linha */
+    gap: 15px; /* Espaço entre os botões */
+    justify-content: center;
+  }
+
+  .buttons button {
+    padding: 25px 0; /* Mais altos */
+    width: 200px;    /* Mais largos */
+    font-size: 1.4em; /* Texto maior */
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(45deg, #7b68ee, #ba55d3);
+    color: white;
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+  }
+
+  .buttons button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(255,255,255,0.6);
+  }
+
+  /* Partículas leves */
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    pointer-events: none;
+    animation: float 10s infinite linear;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0) translateX(0); opacity: 0.5; }
+    50% { transform: translateY(-500px) translateX(50px); opacity: 1; }
+    100% { transform: translateY(0) translateX(0); opacity: 0.5; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Segredos da Mavih</h1>
+  <div class="buttons">
+    <a href="conhecer.html" target="_blank"><button>Conhecer</button></a>
+    <a href="divertir.html" target="_blank"><button>Divertir-se</button></a>
+    <a href="Momentosespeciais.html
+" target="_blank"><button>Momentos
+</button></a>
+    <a href="observacoes.html" target="_blank"><button>Observações</button></a>
+    <!-- NOVO BOTÃO AQUI -->
+  <a href="proximocapitulo.html" target="_blank"><button>O Próximo Capítulo</button></a>
+</div>
+  </div>
+</div>
+
+<script>
+  // Criar partículas leves
+  for(let i=0;i<30;i++){
+    let particle = document.createElement('div');
+    particle.classList.add('particle');
+    let size = Math.random()*8 + 4;
+    particle.style.width = size+'px';
+    particle.style.height = size+'px';
+    particle.style.left = Math.random()*window.innerWidth+'px';
+    particle.style.top = Math.random()*window.innerHeight+'px';
+    particle.style.animationDuration = 5 + Math.random()*10+'s';
+    document.body.appendChild(particle); 
+  }
+</script>
+
+</body>
+</html>

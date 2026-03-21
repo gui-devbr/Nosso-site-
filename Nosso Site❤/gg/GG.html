@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Natal!</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #4b0082, #8a2be2);
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+  }
+
+  .text-container {
+    font-size: 4em;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.5em;
+    white-space: pre;
+    z-index: 2;
+    position: relative;
+  }
+
+  .letter {
+    opacity: 0;
+    display: inline-block;
+    animation: fadeInUp 0.5s forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px) scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .snowflake {
+    position: absolute;
+    top: -10px;
+    color: white;
+    font-size: 1em;
+    user-select: none;
+    pointer-events: none;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.9; }
+    100% { transform: translateY(100vh) translateX(50px) rotate(360deg); opacity: 0.3; }
+  }
+</style>
+</head>
+<body>
+
+<div class="text-container" id="felizNatal"></div>
+
+<script>
+const message = "Feliz Natal, Mavih! 🎄❤️";
+const container = document.getElementById("felizNatal");
+
+message.split("").forEach((char, i) => {
+  const span = document.createElement("span");
+  span.textContent = char;
+  span.className = "letter";
+  span.style.animationDelay = `${i * 0.1}s`;
+  container.appendChild(span);
+});
+
+// Criar flocos de neve
+const flakeCount = 50;
+for(let i = 0; i < flakeCount; i++) {
+  const flake = document.createElement('div');
+  flake.classList.add('snowflake');
+  flake.textContent = '❄';
+  flake.style.left = Math.random() * 100 + 'vw';
+  flake.style.fontSize = (Math.random() * 24 + 12) + 'px';
+  flake.style.animationDuration = (Math.random() * 10 + 5) + 's';
+  flake.style.animationDelay = Math.random() * 5 + 's';
+  document.body.appendChild(flake);
+}
+</script>
+
+</body>
+</html>

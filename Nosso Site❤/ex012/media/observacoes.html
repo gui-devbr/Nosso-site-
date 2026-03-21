@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Segredos da Mavih - Observações</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #4b0082, #8a2be2);
+    min-height: 100vh;
+    color: white;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 3em;
+    margin: 30px 0;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+  }
+
+  section {
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    padding: 0 20px;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
+    transition: transform 0.3s;
+  }
+
+  .card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 25px rgba(255,255,255,0.2);
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+  }
+
+  h3 { margin-bottom: 10px; }
+  p { line-height: 1.6; }
+
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    pointer-events: none;
+    animation: float 10s infinite linear;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0) translateX(0); opacity: 0.5; }
+    50% { transform: translateY(-500px) translateX(50px); opacity: 1; }
+    100% { transform: translateY(0) translateX(0); opacity: 0.5; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Observações Sobre a Mavih</h1>
+
+<section id="observacoes">
+  <h2>Coisas Que Eu Percebi Em Você</h2>
+
+  <div class="card">
+    <h3>1. Criatividade em nível absurdo</h3>
+    <p>Tu é criativa demais 😄  
+    Do nada inventa uma língua nova e fala como se fosse normal, como se todo mundo entendesse.  
+    Teu cérebro roda em 4K, sem travar.</p>
+  </div>
+
+  <div class="card">
+    <h3>2. A energia quando fala de séries</h3>
+    <p>Eu juro: quando tu fala de série, parece que eu tô assistindo junto 😆  
+    Tu conta tudo tão animada que dá pra imaginar a cena inteira.  
+    É impossível não entrar no clima.</p>
+  </div>
+
+  <div class="card">
+    <h3>3. Tu explica as coisas MUITO bem</h3>
+    <p>Sério… tu explica tudo de um jeito tão simples que até assunto difícil vira fácil.  
+    Eu fico só ouvindo e pensando: “ok, essa menina manda demais”.</p>
+  </div>
+
+  <div class="card">
+    <h3>4. O jeito que repara nos detalhes</h3>
+    <p>Isso aí é raro hoje em dia 💛  
+    Tu percebe coisa que ninguém repara.  
+    E é isso que deixa cada conversa contigo com um toque diferente.</p>
+  </div>
+
+</section>
+
+<script>
+  for(let i=0;i<30;i++){
+    let particle = document.createElement('div');
+    particle.classList.add('particle');
+    let size = Math.random()*8 + 4;
+    particle.style.width = size+'px';
+    particle.style.height = size+'px';
+    particle.style.left = Math.random()*window.innerWidth+'px';
+    particle.style.top = Math.random()*window.innerHeight+'px';
+    particle.style.animationDuration = 5 + Math.random()*10+'s';
+    document.body.appendChild(particle);
+  }
+</script>
+
+</body>
+</html>
