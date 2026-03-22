@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Segredos da Mavih - Observações</title>
+<link rel="stylesheet" href="Estilo/style.css">
 <style>
   body {
     margin: 0;
@@ -103,19 +104,8 @@
 
 </section>
 
-<script>
-  for(let i=0;i<30;i++){
-    let particle = document.createElement('div');
-    particle.classList.add('particle');
-    let size = Math.random()*8 + 4;
-    particle.style.width = size+'px';
-    particle.style.height = size+'px';
-    particle.style.left = Math.random()*window.innerWidth+'px';
-    particle.style.top = Math.random()*window.innerHeight+'px';
-    particle.style.animationDuration = 5 + Math.random()*10+'s';
-    document.body.appendChild(particle);
-  }
-</script>
+
+<script src="particle.js"></script>
 
 </body>
 </html>
