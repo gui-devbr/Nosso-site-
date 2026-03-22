@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+@media (min-width:768px;){
+    .buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

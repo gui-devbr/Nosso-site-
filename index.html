@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Segredos da Mavih</title>
+<link rel="stylesheet" href="Estilo/style.css">
+
 <style>
   body {
     margin: 0;
@@ -30,14 +32,14 @@
 
   .buttons {
     display: grid;
-    grid-template-columns: repeat(2, 200px); /* Dois botões por linha */
+    grid-template-columns: 1fr; /* Dois botões por linha */
     gap: 15px; /* Espaço entre os botões */
-    justify-content: center;
+    padding: 0px 20px;
   }
 
   .buttons button {
     padding: 25px 0; /* Mais altos */
-    width: 200px;    /* Mais largos */
+    width: 100%;   /* Mais largos */
     font-size: 1.4em; /* Texto maior */
     border: none;
     border-radius: 15px;
@@ -73,33 +75,28 @@
 
 <div class="container">
   <h1>Segredos da Mavih</h1>
+
   <div class="buttons">
+
     <a href="conhecer.html" target="_blank"><button>Conhecer</button></a>
-    <a href="divertir.html" target="_blank"><button>Divertir-se</button></a>
-    <a href="Momentosespeciais.html
-" target="_blank"><button>Momentos
-</button></a>
-    <a href="observacoes.html" target="_blank"><button>Observações</button></a>
-    <!-- NOVO BOTÃO AQUI -->
-  <a href="proximocapitulo.html" target="_blank"><button>O Próximo Capítulo</button></a>
+
+    <a href="divertir.html" target="_blank"><button>Divertir-se</button>
+    
+    </a>
+
+        <a href="Momentosespeciais.html" target="_blank">
+    <button>Momentos </button>
+
+  </a>
+        <a href="observacoes.html" target="_blank"><button>Observações</button></a>
+
+        <!-- NOVO BOTÃO AQUI -->
+      <a href="proximocapitulo.html" target="_blank"><button>O Próximo Capítulo</button></a>
 </div>
   </div>
 </div>
 
-<script>
-  // Criar partículas leves
-  for(let i=0;i<30;i++){
-    let particle = document.createElement('div');
-    particle.classList.add('particle');
-    let size = Math.random()*8 + 4;
-    particle.style.width = size+'px';
-    particle.style.height = size+'px';
-    particle.style.left = Math.random()*window.innerWidth+'px';
-    particle.style.top = Math.random()*window.innerHeight+'px';
-    particle.style.animationDuration = 5 + Math.random()*10+'s';
-    document.body.appendChild(particle); 
-  }
-</script>
+<script src="particle.js"></script>
 
 </body>
 </html>

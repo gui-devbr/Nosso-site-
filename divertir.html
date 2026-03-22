@@ -101,6 +101,7 @@
 
 <script>
   // Criar partículas leves
+  if(window.innerWidth > 768){
   for(let i=0;i<30;i++){
     let particle = document.createElement('div');
     particle.classList.add('particle');
@@ -112,6 +113,8 @@
     particle.style.animationDuration = 5 + Math.random()*10+'s';
     document.body.appendChild(particle); document.body.appendChild(particle)
   }
+
+}
 </script>
 
 </body>
