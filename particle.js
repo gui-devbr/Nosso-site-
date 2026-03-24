@@ -1,5 +1,5 @@
 
-if(window.innerWidth = 768){
+if(window.innerWidth > 768){
     for (let i = 0; i < 20; i++) {
     let particle = document.createElement('div');
     particle.classList.add('particle');
@@ -8,8 +8,8 @@ if(window.innerWidth = 768){
     particle.style.width = size + 'px';
     particle.style.height = size + 'px';
 
-    particle.style.left = Math.random() * window.innerWidth + 'px';
-    particle.style.top = Math.random() * window.innerHeight + 'px';
+    particle.style.left = Math.random() * 95 + "vw";
+    particle.style.top = Math.random() * 95 + "vh";
 
     document.body.appendChild(particle);
   }
